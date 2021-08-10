@@ -10,7 +10,7 @@ import kodlama.io.humanResourcesProject.entities.concretes.Employee;
 public interface EmployeeService {
 	Result Add(Employee employee);//service etmek istediğim operasyonlarımı yazıyorum.
 
-	DataResult<Optional<Employee>> findById(int id);
+	DataResult<Employee> findById(int id);
 	DataResult<List<Employee>> findAll();
 }
 //interface'imizi service olarak verdiğimiz yer.iş sınıfının interface'i

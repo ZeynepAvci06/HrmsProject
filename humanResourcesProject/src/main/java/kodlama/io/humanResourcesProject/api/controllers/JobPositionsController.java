@@ -1,7 +1,6 @@
 package kodlama.io.humanResourcesProject.api.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,37 +10,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import kodlama.io.humanResourcesProject.business.abstracts.UserService;
+import kodlama.io.humanResourcesProject.business.abstracts.JobPositionService;
 import kodlama.io.humanResourcesProject.core.results.DataResult;
 import kodlama.io.humanResourcesProject.core.results.Result;
-import kodlama.io.humanResourcesProject.entities.concretes.User;
+import kodlama.io.humanResourcesProject.entities.concretes.JobPosition;
 
-
-@RequestMapping("/api/users/")
+@RequestMapping("/api/jobPositions/")
 @RestController
-public class UsersController {
-private UserService userService;
-@Autowired
-public UsersController(UserService userService) {
-	super();
-	this.userService = userService;
-	
-}
+public class JobPositionsController {
+	private JobPositionService jobPositionService;
 
+@Autowired
+public JobPositionsController(JobPositionService jobPositionService) {
+super();
+this.jobPositionService=jobPositionService;
+}
 @GetMapping("findAll")
-public DataResult<List<User>> findAll(){
-	return this.userService.findAll();
-	
+public DataResult<List<JobPosition>> findAll() {
+	return this.jobPositionService.findAll();
+			
 }
 
 @GetMapping("findById")
-public DataResult<User> findById(@RequestParam int id){
-	return this.userService.findById(id);
+public DataResult<JobPosition> findById(@RequestParam int id){
+	return this.jobPositionService.findById(id);
+}
+ 
+@PostMapping("add")
+public Result add(@RequestBody JobPosition jobPosition) {
+	return this.jobPositionService.add(jobPosition);
 }
 
-//bu bir denemek amaçlı yazılmıştır
-@PostMapping("add")
-public Result add(@RequestBody User user) {
- return	this.userService.add(user);
-}
 }

@@ -13,36 +13,35 @@ import kodlama.io.humanResourcesProject.core.results.SuccessDataResult;
 import kodlama.io.humanResourcesProject.core.results.SuccessResult;
 import kodlama.io.humanResourcesProject.dataAccess.abstracts.UserDao;
 import kodlama.io.humanResourcesProject.entities.concretes.User;
+
 @Service
-public class UserManager  implements UserService{
+public class UserManager implements UserService {
 	// Dao'yu constructor ile enjecte ediyoruz.
 	private UserDao userDao;
 
-@Autowired
+	@Autowired
 	public UserManager(UserDao userDao) {
 		super();
 		this.userDao = userDao;
 	}
 
-	
-
 	@Override
-	public Result add( User user) {
+	public Result add(User user) {
 		this.userDao.save(user);
 		return new SuccessResult("Sistem çalışanı eklendi");
 	}
 
 	@Override
-	public DataResult<Optional<User>> findById(int id) {
-		
-		return new SuccessDataResult<Optional<User>> (this.userDao.findById(id),"Id'ye göre data bulundu");
+	public DataResult<User> findById(int id) {
+
+		return new SuccessDataResult<User>(this.userDao.findById(id), "Id'ye göre data bulundu");
 	}
 
 	@Override
 	public DataResult<List<User>> findAll() {
-		
-		return new SuccessDataResult<List<User>>(this.userDao.findAll(),"Data bulundu");
-		
+
+		return new SuccessDataResult<List<User>>(this.userDao.findAll(), "Data bulundu");
+
 	}
 
 }

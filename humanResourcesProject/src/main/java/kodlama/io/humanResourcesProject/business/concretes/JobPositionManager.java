@@ -35,9 +35,9 @@ public class JobPositionManager implements JobPositionService {
 	}
 
 	@Override
-	public DataResult<Optional<JobPosition>> findById(int id) {
+	public DataResult<JobPosition> findById(int id) {
 		
-		return new SuccessDataResult<Optional<JobPosition>>(this.jobPositionDao.findById(id),"Id'ye göre iş pozisyonu bulundu");
+		return new SuccessDataResult<JobPosition>(this.jobPositionDao.findById(id),"Id'ye göre iş pozisyonu bulundu");
 	}
 
 	@Override

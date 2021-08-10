@@ -9,7 +9,7 @@ import kodlama.io.humanResourcesProject.entities.concretes.JobPosition;
 
 public interface JobPositionService {
 	Result add (JobPosition jobPosition);
-	DataResult<Optional<JobPosition>> findById (int id);
+	DataResult<JobPosition> findById (int id);
 	DataResult<List<JobPosition>> findAll();
 	
 

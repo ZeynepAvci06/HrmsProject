@@ -36,9 +36,9 @@ public class CandidateManager implements CandidateService{
 	}
 
 	@Override
-	public DataResult<Optional<Candidate>> findById(int id) {
+	public DataResult<Candidate> findById(int id) {
 		
-		return new SuccessDataResult<Optional<Candidate>>(this.candidateDao.findById(id), "Id'ye göre data bulundu");
+		return  new SuccessDataResult<Candidate>(this.candidateDao.findById(id),"Id'ye göre Data bulundu");
 	}
 
 	@Override

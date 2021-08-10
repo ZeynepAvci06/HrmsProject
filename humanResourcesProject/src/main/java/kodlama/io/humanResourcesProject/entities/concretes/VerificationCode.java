@@ -1,6 +1,8 @@
 package kodlama.io.humanResourcesProject.entities.concretes;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,5 +36,16 @@ public class VerificationCode {
 	@Column(name="user_id")
 	private int userId;
 	
-
+    @Column(name = "create_at",columnDefinition = "Date default CURRENT_DATE")
+	private LocalDateTime createAt = LocalDateTime.now();
+    
+    
+    public VerificationCode (int userId,String code,boolean isVerified,LocalDateTime createAt) {
+    super();
+    this.userId = userId;
+    this.code = code;
+    this.isVerified = isVerified;
+    this.createAt =createAt;
+    
+   }
 }

@@ -1,12 +1,17 @@
 package kodlama.io.humanResourcesProject.dataAccess.abstracts;
 
-import java.util.Optional;
+
+
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import kodlama.io.humanResourcesProject.entities.concretes.Candidate;
 
 public interface CandidateDao extends JpaRepository<Candidate, Integer>{
-
-	Optional<Candidate> findById(int id);
+	
+	List<Candidate> findAllEmail(String email);
+	List<Candidate> findAllIdentityNumber(String identityNumber);
+	Candidate findByIdentityNumber (String identityNumber );
+	Candidate findById(int id);
 }
